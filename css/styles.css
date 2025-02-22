@@ -4,6 +4,9 @@ html {
 
 body {
   background: linear-gradient(to bottom, #404040, #000000);
+  background-size: cover; /* Ensures gradient scales to fill */
+  background-repeat: no-repeat; /* Prevents repetition */
+  min-height: 100vh; /* Forces body to at least full viewport height */
   margin: 0;
   color: #f0f8ff;
   position: relative;
@@ -116,7 +119,7 @@ tr:nth-child(even) {
   background-color: rgba(249, 249, 249, 0.9);
 }
 tr:hover {
-  background-color: #4db1eb; /* Changed to vibrant blue */
+  background-color: #4db1eb;
   transition: background-color 0.3s;
 }
 
