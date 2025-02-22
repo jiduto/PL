@@ -3,28 +3,14 @@ html {
 }
 
 body {
-  background-image: url('/images/bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* Removed background-attachment: fixed to fix mobile */
+  background: linear-gradient(to bottom, #404040, #000000); /* Dark gray to black */
   margin: 0;
   color: #f0f8ff; /* Alice Blue for default text */
-  position: relative; /* For overlay */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Shadow for all text */
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-/* Dark overlay */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* 50% opacity dark layer */
-  z-index: -1; /* Behind content */
-}
+/* Removed body::before overlay since no image */
 
 /* Navbar Styles */
 .navbar {
@@ -132,7 +118,7 @@ tr:nth-child(even) {
   background-color: rgba(249, 249, 249, 0.9);
 }
 tr:hover {
-  background-color: #c0c0c0; /* gray hover */
+  background-color: #a9a9a9; /* Darker gray hover */
   transition: background-color 0.3s;
 }
 
@@ -175,9 +161,5 @@ tr:hover {
   }
   .page-title {
     font-size: 20px;
-  }
-  /* Ensure background persists on mobile */
-  body {
-    background-attachment: scroll; /* Fallback for mobile */
   }
 }
