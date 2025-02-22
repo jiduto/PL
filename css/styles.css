@@ -22,7 +22,7 @@ th, td {
   text-align: left;
 }
 th {
-  background: linear-gradient(to bottom, #3090c7, #40b8f5);
+  background: linear-gradient(to bottom, #40b8f5, #38a4e0, #3090c7);
   color: white;
   font-weight: bold;
 }
