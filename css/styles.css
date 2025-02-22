@@ -41,7 +41,7 @@ tr:hover {
 }
 @media (max-width: 600px) {
   table {
-    width: 90%; /* Down from 100% to add margins */
+    width: 100%;
     font-size: 16px;
     transform: scale(0.9); /* Zooms out 10% */
     transform-origin: top left; /* Keeps it aligned */
