@@ -1,3 +1,6 @@
+html {
+  font-family: 'Kanit', Arial, sans-serif;
+}
 .page-title {
   text-align: center;
 }
@@ -8,7 +11,6 @@
 table {
   border-collapse: collapse;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
   table-layout: auto;
   display: block;
   max-height: 80vh;
@@ -32,7 +34,7 @@ th {
   position: relative;
 }
 th.sorted {
-  background: linear-gradient(to bottom, #50c8ff, #48b4ea, #40a0d7); /* Lighter gradient */
+  background: linear-gradient(to bottom, #50c8ff, #48b4ea, #40a0d7);
 }
 th[data-order="asc"]::after {
   content: " ↑";
@@ -45,7 +47,7 @@ th[data-order="desc"]::after {
   right: 5px;
 }
 th:not(.sorted)::after {
-  content: ""; /* No arrow unless sorted */
+  content: "";
 }
 td {
   background-color: #fff;
