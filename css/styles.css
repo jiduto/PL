@@ -1,18 +1,18 @@
 .page-title {
-  text-align: center; /* Centers the text */
+  text-align: center;
 }
 .table-container {
-  margin: 30px auto; /* Centers the container */
-  width: fit-content; /* Shrinks to table’s natural width */
+  margin: 30px auto;
+  width: fit-content;
 }
 table {
   border-collapse: collapse;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
   table-layout: auto;
-  display: block; /* Keeps scrolling */
-  max-height: 80vh; /* Keeps fixed height */
-  overflow-y: auto; /* Keeps vertical scrolling */
+  display: block;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 thead {
   position: sticky;
@@ -22,7 +22,7 @@ thead {
 th, td {
   border: 1px solid #ddd;
   padding: 12px;
-  text-align: left;
+  text-align: center;
 }
 th {
   background: linear-gradient(to bottom, #40b8f5, #38a4e0, #3090c7);
@@ -41,23 +41,19 @@ tr:hover {
 }
 @media (max-width: 600px) {
   .table-container {
-    display: flex; /* Flexbox for centering */
-    justify-content: center; /* Horizontally center */
+    display: flex;
+    justify-content: center;
   }
   table {
-    width: 100%; /* Back to your fix */
+    width: 100%;
     font-size: 16px;
-    transform: scale(0.9); /* 10% zoom out */
-    transform-origin: top center; /* Center the scaled table */
+    transform: scale(0.9);
+    transform-origin: top center;
   }
   th, td {
     padding: 10px;
   }
   .page-title {
     font-size: 20px;
-  }
-}
-  th, td {
-    padding: 8px;
   }
 }
