@@ -1,9 +1,17 @@
 table {
   border-collapse: collapse;
-  margin: 30px auto; /* Keep centered with spacing */
+  margin: 30px auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
-  table-layout: auto; /* Let columns size to content */
+  table-layout: auto;
+  display: block; /* Allows scrolling */
+  max-height: 400px; /* Limits table height, adjust as needed */
+  overflow-y: auto; /* Enables vertical scrolling */
+}
+thead {
+  position: sticky; /* Fixes header */
+  top: 0; /* Sticks to top of table */
+  z-index: 1; /* Ensures header stays above rows */
 }
 th, td {
   border: 1px solid #ddd;
