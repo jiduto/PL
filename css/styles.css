@@ -8,7 +8,7 @@ table {
   font-family: Arial, sans-serif;
   table-layout: auto;
   display: block; /* Keeps scrolling */
-  max-height: 400px; /* Keeps fixed height */
+  max-height: 75vh; /* Keeps fixed height */
   overflow-y: auto; /* Keeps vertical scrolling */
 }
 thead {
