@@ -1,17 +1,20 @@
+.table-container {
+  margin: 30px auto; /* Centers the container */
+  width: fit-content; /* Shrinks to table’s natural width */
+}
 table {
   border-collapse: collapse;
-  margin: 30px auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
   table-layout: auto;
-  display: block; /* Allows scrolling */
-  max-height: 400px; /* Limits table height, adjust as needed */
-  overflow-y: auto; /* Enables vertical scrolling */
+  display: block; /* Keeps scrolling */
+  max-height: 400px; /* Keeps fixed height */
+  overflow-y: auto; /* Keeps vertical scrolling */
 }
 thead {
-  position: sticky; /* Fixes header */
-  top: 0; /* Sticks to top of table */
-  z-index: 1; /* Ensures header stays above rows */
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 th, td {
   border: 1px solid #ddd;

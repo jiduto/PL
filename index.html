@@ -6,19 +6,19 @@
   </head>
   <body>
     <h1>LEAGUE RESULTS</h1>
-    <table id="dataTable">
-      <thead>
-        <tr id="headers"></tr>
-      </thead>
-      <tbody id="rows"></tbody>
-    </table>
+    <div class="table-container">
+      <table id="dataTable">
+        <thead>
+          <tr id="headers"></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
     <script>
       fetch('/api/hello')
         .then(response => response.json())
         .then(result => {
           const data = result.data;
-
-          // Populate headers
           const headersRow = document.getElementById('headers');
           const headers = Object.keys(data[0]);
           headers.forEach(header => {
@@ -26,8 +26,6 @@
             th.textContent = header;
             headersRow.appendChild(th);
           });
-
-          // Populate rows
           const tbody = document.getElementById('rows');
           data.forEach(row => {
             const tr = document.createElement('tr');
