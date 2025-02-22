@@ -7,93 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- Placeholder for menu -->
     <div id="menu-placeholder"></div>
-
-    <h1 class="page-title">POKER LEAGUE RESULTS</h1>
-    <div class="table-container">
-      <table id="dataTable">
-        <thead>
-          <tr id="headers"></tr>
-        </thead>
-        <tbody id="rows"></tbody>
-      </table>
-    </div>
+    <h1 class="page-title">Welcome to the Poker League Website</h1>
+    <p>This is the home page.</p>
     <script>
-      
-      // Load menu dynamically
       fetch('/menu.html')
         .then(response => response.text())
         .then(html => {
           document.getElementById('menu-placeholder').innerHTML = html;
-          // Add hamburger toggle after menu is loaded
           document.querySelector('.hamburger').addEventListener('click', () => {
             document.querySelector('.nav-menu').classList.toggle('active');
           });
         })
         .catch(error => console.error('Error loading menu:', error));
-
-      // Table logic
-      fetch('/api/hello')
-        .then(response => response.json())
-        .then(result => {
-          const data = result.data;
-          const headersRow = document.getElementById('headers');
-          const headers = Object.keys(data[0]);
-          
-          headers.forEach((header, index) => {
-            const th = document.createElement('th');
-            th.textContent = header;
-            th.dataset.column = index;
-            th.dataset.order = 'asc';
-            th.style.cursor = 'pointer';
-            th.addEventListener('click', () => sortTable(index));
-            headersRow.appendChild(th);
-          });
-
-          const tbody = document.getElementById('rows');
-          data.forEach(row => {
-            const tr = document.createElement('tr');
-            headers.forEach(header => {
-              const td = document.createElement('td');
-              td.textContent = row[header];
-              tr.appendChild(td);
-            });
-            tbody.appendChild(tr);
-          });
-        })
-        .catch(error => console.error('Error:', error));
-
-      function sortTable(columnIndex) {
-        const tbody = document.getElementById('rows');
-        const headersRow = document.getElementById('headers');
-        const th = headersRow.children[columnIndex];
-        const order = th.dataset.order === 'asc' ? 'desc' : 'asc';
-        th.dataset.order = order;
-
-        // Reset other headers and remove 'sorted' class
-        Array.from(headersRow.children).forEach(h => {
-          if (h !== th) {
-            h.dataset.order = 'asc'; // Reset to default
-            h.classList.remove('sorted');
-          }
-        });
-        // Add 'sorted' class to clicked header
-        th.classList.add('sorted');
-
-        const rows = Array.from(tbody.getElementsByTagName('tr'));
-        rows.sort((a, b) => {
-          const aText = a.cells[columnIndex].textContent.trim();
-          const bText = b.cells[columnIndex].textContent.trim();
-          const aNum = parseFloat(aText);
-          const bNum = parseFloat(bText);
-          const isNumeric = !isNaN(aNum) && !isNaN(bNum);
-          return isNumeric 
-            ? (order === 'asc' ? aNum - bNum : bNum - aNum)
-            : (order === 'asc' ? aText.localeCompare(bText) : bText.localeCompare(aText));
-        });
-        rows.forEach(row => tbody.appendChild(row));
-      }
     </script>
   </body>
 </html>
