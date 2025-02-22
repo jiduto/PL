@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PL Site</title>
+</head>
+<body>
+	<h1>Hello PL</h1>
+	<p>Data will go here: <span id="data"></span></p>
+	<script>
+		fetch('/api/hello')
+			.then(response => response.json())
+			.then(data => document.getElementById('data').innerText = data.message);
+	</script>
+</body>
+</html>
