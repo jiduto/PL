@@ -132,7 +132,7 @@ tr:nth-child(even) {
   background-color: rgba(249, 249, 249, 0.9);
 }
 tr:hover {
-  background-color: #d3d3d3; /* Light gray hover */
+  background-color: #c0c0c0; /* gray hover */
   transition: background-color 0.3s;
 }
 
