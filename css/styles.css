@@ -8,7 +8,7 @@ table {
   font-family: Arial, sans-serif;
   table-layout: auto;
   display: block; /* Keeps scrolling */
-  max-height: 75vh; /* Keeps fixed height */
+  max-height: 80vh; /* Keeps fixed height */
   overflow-y: auto; /* Keeps vertical scrolling */
 }
 thead {
@@ -22,7 +22,7 @@ th, td {
   text-align: left;
 }
 th {
-  background-color: #40b8f5;
+  background: linear-gradient(to bottom, #3090c7, #40b8f5);
   color: white;
   font-weight: bold;
 }
