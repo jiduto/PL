@@ -1,18 +1,22 @@
-const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://jiduto:Ee4422400!!@clusterpl.irn25.mongodb.net/?retryWrites=true&w=majority&appName=ClusterPL";
+const fs = require('fs').promises; // For reading files
+const path = require('path');
+const { parse } = require('csv-parse/sync');
 
-module.exports = async (req, res) => { 
-	const client = new MongoClient(uri); try { 
-	await client.connect(); 
-	const db = client.db('test'); 
-	const collection = db.collection('items'); 
-	await collection.insertOne({ name: "Test Item" }); 
-	const result = await 
-collection.findOne({ name: "Test Item" }); 
-	res.json({ message: "Data from MongoDB: " + result.name }); 
-	} catch (e) { 
-	res.status(500).json({ error: e.message }); 
-	} finally { 
-		await client.close(); 
-	} 
+module.exports = async (req, res) => {
+  try {
+    // Path to the CSV file
+    const csvPath = path.join(__dirname, '../data.csv');
+    const csvData = await fs.readFile(csvPath, 'utf-8');
+
+    // Parse CSV into an array of objects
+    const records = parse(csvData, {
+      columns: true, // Use first row as headers
+      skip_empty_lines: true
+    });
+
+    // Send the data as JSON
+    res.json({ data: records });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
