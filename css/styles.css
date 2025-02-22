@@ -41,9 +41,16 @@ tr:hover {
 }
 @media (max-width: 600px) {
   table {
-    width: 100%;
-    font-size: 14px;
+    width: 100%; /* Still full width */
+    font-size: 16px; /* Bigger text, up from 14px */
   }
+  th, td {
+    padding: 10px; /* Slightly more padding, up from 8px */
+  }
+  .page-title {
+    font-size: 20px; /* Slightly larger title */
+  }
+}
   th, td {
     padding: 8px;
   }
