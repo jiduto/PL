@@ -7,7 +7,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* Removed background-attachment: fixed to fix mobile */
   margin: 0;
   color: #f0f8ff; /* Alice Blue for default text */
   position: relative; /* For overlay */
@@ -26,7 +26,7 @@ body::before {
   z-index: -1; /* Behind content */
 }
 
-/* Navbar Styles - Adjust hover for visibility */
+/* Navbar Styles */
 .navbar {
   background: linear-gradient(to bottom, #3090c7, #40b8f5);
   padding: 15px;
@@ -45,20 +45,20 @@ body::before {
   margin: 0;
 }
 .nav-link {
-  color: #f0f8ff; /* Match body text */
+  color: #f0f8ff;
   text-decoration: none;
   padding: 10px 20px;
   display: block;
   font-weight: 400;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Slightly lighter shadow */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.3); /* Slightly brighter hover */
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 5px;
 }
 .hamburger {
   display: none;
-  color: #f0f8ff; /* Match text */
+  color: #f0f8ff;
   font-size: 24px;
   cursor: pointer;
   padding: 10px;
@@ -68,11 +68,11 @@ body::before {
 /* Page Content */
 .page-title {
   text-align: center;
-  color: #f0f8ff; /* Explicitly set for h1 */
+  color: #f0f8ff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 p {
-  color: #f0f8ff; /* For index.html p */
+  color: #f0f8ff;
   text-align: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
@@ -84,7 +84,7 @@ p {
 }
 table {
   border-collapse: collapse;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Darker shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   table-layout: auto;
   display: block;
   max-height: 80vh;
@@ -102,7 +102,7 @@ th, td {
 }
 th {
   background: linear-gradient(to bottom, #40b8f5, #38a4e0, #3090c7);
-  color: #f0f8ff; /* Match text */
+  color: #f0f8ff;
   font-weight: bold;
   cursor: pointer;
   position: relative;
@@ -125,14 +125,14 @@ th:not(.sorted)::after {
   content: "";
 }
 td {
-  background-color: rgba(255, 255, 255, 0.9); /* Translucent white */
-  color: #333; /* Dark gray for contrast */
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
 }
 tr:nth-child(even) {
   background-color: rgba(249, 249, 249, 0.9);
 }
 tr:hover {
-  background-color: rgba(241, 241, 241, 0.9);
+  background-color: #d3d3d3; /* Light gray hover */
   transition: background-color 0.3s;
 }
 
@@ -175,5 +175,9 @@ tr:hover {
   }
   .page-title {
     font-size: 20px;
+  }
+  /* Ensure background persists on mobile */
+  body {
+    background-attachment: scroll; /* Fallback for mobile */
   }
 }
