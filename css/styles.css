@@ -1,10 +1,9 @@
 table {
   border-collapse: collapse;
-  width: 90%;
-  max-width: 800px;
-  margin: 30px auto;
+  margin: 30px auto; /* Keep centered with spacing */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
+  table-layout: auto; /* Let columns size to content */
 }
 th, td {
   border: 1px solid #ddd;
