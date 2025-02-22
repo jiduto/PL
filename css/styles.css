@@ -1,3 +1,6 @@
+.page-title {
+  text-align: center; /* Centers the text */
+}
 .table-container {
   margin: 30px auto; /* Centers the container */
   width: fit-content; /* Shrinks to table’s natural width */
