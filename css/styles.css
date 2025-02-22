@@ -28,18 +28,24 @@ th {
   background: linear-gradient(to bottom, #40b8f5, #38a4e0, #3090c7);
   color: white;
   font-weight: bold;
-  cursor: pointer; /* Reinforce clickability */
-  position: relative; /* For arrow positioning */
+  cursor: pointer;
+  position: relative;
+}
+th.sorted {
+  background: linear-gradient(to bottom, #50c8ff, #48b4ea, #40a0d7); /* Lighter gradient */
 }
 th[data-order="asc"]::after {
-  content: " ↑"; /* Up arrow for ascending */
+  content: " ↑";
   position: absolute;
   right: 5px;
 }
 th[data-order="desc"]::after {
-  content: " ↓"; /* Down arrow for descending */
+  content: " ↓";
   position: absolute;
   right: 5px;
+}
+th:not(.sorted)::after {
+  content: ""; /* No arrow unless sorted */
 }
 td {
   background-color: #fff;

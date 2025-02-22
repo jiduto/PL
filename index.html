@@ -16,7 +16,6 @@
       </table>
     </div>
     <script>
-      // Fetch and populate the table
       fetch('/api/hello')
         .then(response => response.json())
         .then(result => {
@@ -24,18 +23,16 @@
           const headersRow = document.getElementById('headers');
           const headers = Object.keys(data[0]);
           
-          // Create clickable headers
           headers.forEach((header, index) => {
             const th = document.createElement('th');
             th.textContent = header;
-            th.dataset.column = index; // Store column index
-            th.dataset.order = 'asc'; // Default sort order
-            th.style.cursor = 'pointer'; // Show clickable cursor
-            th.addEventListener('click', () => sortTable(index)); // Add click handler
+            th.dataset.column = index;
+            th.dataset.order = 'asc';
+            th.style.cursor = 'pointer';
+            th.addEventListener('click', () => sortTable(index));
             headersRow.appendChild(th);
           });
 
-          // Populate rows
           const tbody = document.getElementById('rows');
           data.forEach(row => {
             const tr = document.createElement('tr');
@@ -49,36 +46,34 @@
         })
         .catch(error => console.error('Error:', error));
 
-      // Sorting function
       function sortTable(columnIndex) {
         const tbody = document.getElementById('rows');
         const headersRow = document.getElementById('headers');
         const th = headersRow.children[columnIndex];
-        const order = th.dataset.order === 'asc' ? 'desc' : 'asc'; // Toggle order
-        th.dataset.order = order; // Update sort direction
+        const order = th.dataset.order === 'asc' ? 'desc' : 'asc';
+        th.dataset.order = order;
 
-        // Get all rows as an array
+        // Reset other headers and remove 'sorted' class
+        Array.from(headersRow.children).forEach(h => {
+          if (h !== th) {
+            h.dataset.order = 'asc'; // Reset to default
+            h.classList.remove('sorted');
+          }
+        });
+        // Add 'sorted' class to clicked header
+        th.classList.add('sorted');
+
         const rows = Array.from(tbody.getElementsByTagName('tr'));
-
-        // Sort rows based on column content
         rows.sort((a, b) => {
           const aText = a.cells[columnIndex].textContent.trim();
           const bText = b.cells[columnIndex].textContent.trim();
-          // Handle numeric sorting if applicable
           const aNum = parseFloat(aText);
           const bNum = parseFloat(bText);
           const isNumeric = !isNaN(aNum) && !isNaN(bNum);
-
-          if (isNumeric) {
-            return order === 'asc' ? aNum - bNum : bNum - aNum;
-          } else {
-            return order === 'asc' 
-              ? aText.localeCompare(bText) 
-              : bText.localeCompare(aText);
-          }
+          return isNumeric 
+            ? (order === 'asc' ? aNum - bNum : bNum - aNum)
+            : (order === 'asc' ? aText.localeCompare(bText) : bText.localeCompare(aText));
         });
-
-        // Re-append sorted rows
         rows.forEach(row => tbody.appendChild(row));
       }
     </script>
