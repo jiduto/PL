@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- Placeholder for menu -->
+    <div id="menu-placeholder"></div>
+
     <h1 class="page-title">POKER LEAGUE RESULTS</h1>
     <div class="table-container">
       <table id="dataTable">
@@ -17,6 +20,20 @@
       </table>
     </div>
     <script>
+      
+      // Load menu dynamically
+      fetch('/menu.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('menu-placeholder').innerHTML = html;
+          // Add hamburger toggle after menu is loaded
+          document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-menu').classList.toggle('active');
+          });
+        })
+        .catch(error => console.error('Error loading menu:', error));
+
+      // Table logic
       fetch('/api/hello')
         .then(response => response.json())
         .then(result => {
