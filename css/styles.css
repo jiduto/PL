@@ -28,6 +28,18 @@ th {
   background: linear-gradient(to bottom, #40b8f5, #38a4e0, #3090c7);
   color: white;
   font-weight: bold;
+  cursor: pointer; /* Reinforce clickability */
+  position: relative; /* For arrow positioning */
+}
+th[data-order="asc"]::after {
+  content: " ↑"; /* Up arrow for ascending */
+  position: absolute;
+  right: 5px;
+}
+th[data-order="desc"]::after {
+  content: " ↓"; /* Down arrow for descending */
+  position: absolute;
+  right: 5px;
 }
 td {
   background-color: #fff;
