@@ -40,12 +40,15 @@ tr:hover {
   transition: background-color 0.3s;
 }
 @media (max-width: 600px) {
+  .table-container {
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Horizontally center */
+  }
   table {
-    width: 100%;
+    width: 100%; /* Back to your fix */
     font-size: 16px;
-    transform: scale(0.9); /* Zooms out 10% */
-    transform-origin: top left; /* Keeps it aligned */
-    margin: 0 auto; /* Centers the scaled table */
+    transform: scale(0.9); /* 10% zoom out */
+    transform-origin: top center; /* Center the scaled table */
   }
   th, td {
     padding: 10px;
