@@ -2,6 +2,15 @@ html {
   font-family: 'Kanit', sans-serif;
 }
 
+body {
+  background-image: url('/images/bg.jpg');
+  background-size: cover; /* Scales image to cover the page */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-attachment: fixed; /* Keeps it static while scrolling */
+  margin: 0; /* Removes default margin */
+}
+
 /* Navbar Styles */
 .navbar {
   background: linear-gradient(to bottom, #3090c7, #40b8f5);
