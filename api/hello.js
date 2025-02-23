@@ -5,19 +5,23 @@ const client = new MongoClient(uri);
 
 module.exports = async (req, res) => {
   try {
+    console.log('Connecting to MongoDB...');
     await client.connect();
+    console.log('Connected successfully');
     const database = client.db('poker_league');
+    console.log('Using database: poker_league');
 
     const resultCollections = Array.from({ length: 11 }, (_, i) => 
       `results${String(i + 1).padStart(2, '0')}` // results01 to results11
     );
+    console.log('Collections to check:', resultCollections);
 
     const allResults = [];
     for (const collName of resultCollections) {
       const collection = database.collection(collName);
       try {
         const data = await collection.find({}, { projection: { _id: 0 } }).toArray();
-        console.log(`Fetched ${data.length} records from ${collName}`);
+        console.log(`Fetched ${data.length} records from ${collName}:`, data);
         allResults.push(...data);
       } catch (err) {
         console.log(`No data or error in ${collName}: ${err.message}`);
@@ -29,10 +33,12 @@ module.exports = async (req, res) => {
       return res.json({ data: [] });
     }
 
-    // Aggregate data by Name
     const standingsMap = new Map();
     allResults.forEach(entry => {
-      if (!entry.Name || entry.Name.trim() === '') return;
+      if (!entry.Name || entry.Name.trim() === '') {
+        console.log('Skipping invalid entry:', entry);
+        return;
+      }
 
       const name = entry.Name;
       if (!standingsMap.has(name)) {
@@ -45,10 +51,14 @@ module.exports = async (req, res) => {
 
     let standings = Array.from(standingsMap.values());
 
-    // Sort by Points descending and assign Rank
+    if (standings.length === 0) {
+      console.log('No valid standings after aggregation');
+      return res.json({ data: [] });
+    }
+
     standings.sort((a, b) => b.Points - a.Points);
     standings.forEach((entry, index) => {
-      entry.Rank = index + 1; // Rank 1 for highest points
+      entry.Rank = index + 1;
     });
 
     console.log('Aggregated standings with ranks:', standings);
