@@ -38,12 +38,12 @@
           const data = result.data || [];
           if (data.length === 0) {
             console.log('No data to display');
-            document.getElementById('rows').innerHTML = '<tr><td colspan="6">No results data available</td></tr>';
+            document.getElementById('rows').innerHTML = '<tr><td colspan="5">No results data available</td></tr>';
             return;
           }
 
           const headersRow = document.getElementById('headers');
-          const columnOrder = ["RANK", "NAME", "POINTS", "$ Won", "KO's", "# of Games Played"];
+          const columnOrder = ["RANK", "NAME", "POINTS", "$ Won", "KO's"]; // Removed "# of Games Played"
           columnOrder.forEach((header, index) => {
             const th = document.createElement('th');
             th.textContent = header;
@@ -62,9 +62,9 @@
               const value = row[header];
               if (header === '$ Won' && typeof value === 'string') {
                 const numValue = parseFloat(value.replace('$', '').replace(/,/g, '')) || 0;
-                td.textContent = numValue === 0 ? '' : value; // Blank if $0, keep string otherwise
+                td.textContent = numValue === 0 ? '' : value;
               } else {
-                td.textContent = value === 0 ? '' : String(value || ''); // Blank for 0
+                td.textContent = value === 0 ? '' : String(value || '');
               }
               tr.appendChild(td);
             });
@@ -73,7 +73,7 @@
         })
         .catch(error => {
           console.error('Error fetching results:', error);
-          document.getElementById('rows').innerHTML = '<tr><td colspan="6">Error loading results</td></tr>';
+          document.getElementById('rows').innerHTML = '<tr><td colspan="5">Error loading results</td></tr>';
         });
 
       function sortTable(columnIndex) {
