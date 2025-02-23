@@ -8,37 +8,48 @@ module.exports = async (req, res) => {
     await client.connect();
     const database = client.db('poker_league');
 
-    // List of all results collections
+    // List of results collections (no underscore)
     const resultCollections = Array.from({ length: 11 }, (_, i) => 
-      `results_${String(i + 1).padStart(2, '0')}` // results_01 to results_11
+      `results${String(i + 1).padStart(2, '0')}` // results01 to results11
     );
 
-    // Fetch data from all collections
     const allResults = [];
     for (const collName of resultCollections) {
       const collection = database.collection(collName);
-      const data = await collection.find({}, { projection: { _id: 0 } }).toArray();
-      allResults.push(...data);
+      try {
+        const data = await collection.find({}, { projection: { _id: 0 } }).toArray();
+        console.log(`Fetched ${data.length} records from ${collName}`);
+        allResults.push(...data);
+      } catch (err) {
+        console.log(`No data or error in ${collName}: ${err.message}`);
+      }
     }
 
-    // Aggregate data by Name
+    if (allResults.length === 0) {
+      console.log('No results found across all collections');
+      return res.json({ data: [] });
+    }
+
+    // Aggregate data by Name, handling missing/empty fields
     const standingsMap = new Map();
     allResults.forEach(entry => {
+      if (!entry.Name || entry.Name.trim() === '') return;
+
       const name = entry.Name;
       if (!standingsMap.has(name)) {
         standingsMap.set(name, { Name: name, Points: 0, "$ Won": 0 });
       }
       const current = standingsMap.get(name);
-      current.Points += entry.Points || 0;
-      current["$ Won"] += entry["$ Won"] || 0;
+      current.Points += Number(entry.Points) || 0;
+      current["$ Won"] += Number(entry["$ Won"]) || 0;
     });
 
-    // Convert map to array for response
     const standings = Array.from(standingsMap.values());
+    console.log('Aggregated standings:', standings);
 
     res.json({ data: standings });
   } catch (error) {
-    console.error('Error fetching from MongoDB:', error);
+    console.error('Error in API:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   } finally {
     await client.close();
