@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "mongodb": "^6.3.0",
-    "csv-parse": "^5.5.0" // Can remove this later if no CSV use
+    "csv-parse": "^5.5.0"
   }
 }
