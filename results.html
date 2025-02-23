@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Results</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="menu-placeholder"></div>
+    <h1 class="page-title">Game Results</h1>
+    <div class="results-links">
+      <ul>
+        <li><a href="/results_game01.html">Game 1 Results</a></li>
+        <li><a href="/results_game02.html">Game 2 Results</a></li>
+        <li><a href="/results_game03.html">Game 3 Results</a></li>
+        <li><a href="/results_game04.html">Game 4 Results</a></li>
+        <li><a href="/results_game05.html">Game 5 Results</a></li>
+        <li><a href="/results_game06.html">Game 6 Results</a></li>
+        <li><a href="/results_game07.html">Game 7 Results</a></li>
+        <li><a href="/results_game08.html">Game 8 Results</a></li>
+        <li><a href="/results_game09.html">Game 9 Results</a></li>
+        <li><a href="/results_game10.html">Game 10 Results</a></li>
+        <li><a href="/results_game11.html">Game 11 Results</a></li>
+      </ul>
+    </div>
+    <script>
+      fetch('/menu.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('menu-placeholder').innerHTML = html;
+          document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-menu').classList.toggle('active');
+          });
+        })
+        .catch(error => console.error('Error loading menu:', error));
+    </script>
+  </body>
+</html>
