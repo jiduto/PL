@@ -10,10 +10,9 @@ module.exports = async (req, res) => {
     const database = client.db('poker_league');
     const collection = database.collection('standings');
 
-    // Fetch all documents from the standings collection
-    const data = await collection.find({}).toArray();
+    // Fetch data, excluding the _id field
+    const data = await collection.find({}, { projection: { _id: 0 } }).toArray();
 
-    // Format data to match previous CSV structure (no $ formatting here)
     res.json({ data });
   } catch (error) {
     console.error('Error fetching from MongoDB:', error);

@@ -50,8 +50,12 @@
             const tr = document.createElement('tr');
             headers.forEach(header => {
               const td = document.createElement('td');
-              // Add $ prefix for display if "$ Won" column
-              td.textContent = header === '$ Won' ? `$${row[header]}` : row[header];
+              // Only add $ for "$ Won" if it’s a number
+              if (header === '$ Won' && typeof row[header] === 'number') {
+                td.textContent = `$${row[header]}`;
+              } else {
+                td.textContent = row[header];
+              }
               tr.appendChild(td);
             });
             tbody.appendChild(tr);
@@ -81,14 +85,12 @@
           const aText = a.cells[columnIndex].textContent.trim();
           const bText = b.cells[columnIndex].textContent.trim();
 
-          // Handle "$ Won" column specifically
           if (headerText === '$ Won') {
             const aNum = parseFloat(aText.replace('$', '').replace(/,/g, ''));
             const bNum = parseFloat(bText.replace('$', '').replace(/,/g, ''));
             return order === 'asc' ? aNum - bNum : bNum - aNum;
           }
 
-          // Numeric sorting for other columns if applicable
           const aNum = parseFloat(aText);
           const bNum = parseFloat(bText);
           const isNumeric = !isNaN(aNum) && !isNaN(bNum);
