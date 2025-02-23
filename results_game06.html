@@ -59,7 +59,13 @@
             const tr = document.createElement('tr');
             columnOrder.forEach(header => {
               const td = document.createElement('td');
-              td.textContent = header === '$ Won' && typeof row[header] === 'string' ? row[header] : String(row[header] || '');
+              const value = row[header];
+              if (header === '$ Won' && typeof value === 'string') {
+                const numValue = parseFloat(value.replace('$', '').replace(/,/g, '')) || 0;
+                td.textContent = numValue === 0 ? '' : value; // Blank if $0, keep string otherwise
+              } else {
+                td.textContent = value === 0 ? '' : String(value || ''); // Blank for 0
+              }
               tr.appendChild(td);
             });
             tbody.appendChild(tr);
@@ -93,13 +99,13 @@
           const bText = b.cells[columnIndex].textContent.trim();
 
           if (headerText === '$ Won') {
-            const aNum = parseFloat(aText.replace('$', '').replace(/,/g, '')) || 0;
-            const bNum = parseFloat(bText.replace('$', '').replace(/,/g, '')) || 0;
+            const aNum = aText === '' ? 0 : parseFloat(aText.replace('$', '').replace(/,/g, ''));
+            const bNum = bText === '' ? 0 : parseFloat(bText.replace('$', '').replace(/,/g, ''));
             return order === 'asc' ? aNum - bNum : bNum - aNum;
           }
 
-          const aNum = parseFloat(aText);
-          const bNum = parseFloat(bText);
+          const aNum = aText === '' ? 0 : parseFloat(aText);
+          const bNum = bText === '' ? 0 : parseFloat(bText);
           const isNumeric = !isNaN(aNum) && !isNaN(bNum);
           
           if (isNumeric) {
