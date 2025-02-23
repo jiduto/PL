@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     console.log('Using database: poker_league');
 
     const resultCollections = Array.from({ length: 11 }, (_, i) => 
-      `results${String(i + 1).padStart(2, '0')}` // results01 to results11
+      `results${String(i + 1).padStart(2, '0')}`
     );
     console.log('Collections to check:', resultCollections);
 
@@ -35,7 +35,6 @@ module.exports = async (req, res) => {
 
     const standingsMap = new Map();
     allResults.forEach((entry, index) => {
-      // Use "NAME" (uppercase) as in your data
       if (!entry.NAME || entry.NAME.trim() === '') {
         console.log('Skipping invalid entry (no NAME):', entry);
         return;
@@ -43,12 +42,19 @@ module.exports = async (req, res) => {
 
       const name = entry.NAME;
       if (!standingsMap.has(name)) {
-        standingsMap.set(name, { Name: name, Points: 0, "$ Won": 0 });
+        standingsMap.set(name, { 
+          Name: name, 
+          Points: 0, 
+          "$ Won": 0, 
+          "KO's": 0, 
+          "# of Games Played": 0 
+        });
       }
       const current = standingsMap.get(name);
-      current.Points += Number(entry.POINTS) || 0; // Use "POINTS" (uppercase)
-      // Handle "$ Won" as string or number
+      current.Points += Number(entry.POINTS) || 0;
       current["$ Won"] += Number(String(entry["$ Won"]).replace('$', '').replace(/,/g, '')) || 0;
+      current["KO's"] += Number(entry["KO's"]) || 0; // Aggregate knockouts
+      current["# of Games Played"] += Number(entry["# of Games Played"]) || 0; // Aggregate games
       console.log('Processed entry for', name, 'Current totals:', current);
     });
 
@@ -61,7 +67,7 @@ module.exports = async (req, res) => {
 
     standings.sort((a, b) => b.Points - a.Points);
     standings.forEach((entry, index) => {
-      entry.Rank = index + 1; // Dynamic Rank based on Points
+      entry.Rank = index + 1;
     });
 
     console.log('Aggregated standings with ranks:', standings);
