@@ -1,22 +1,24 @@
-const fs = require('fs').promises; // For reading files
-const path = require('path');
-const { parse } = require('csv-parse/sync');
+const { MongoClient } = require('mongodb');
+
+// Use environment variable for security (set in Vercel dashboard)
+const uri = process.env.MONGODB_URI || "mongodb+srv://jiduto:Ee4422400!!@clusterpl.irn25.mongodb.net/?retryWrites=true&w=majority&appName=ClusterPL";
+const client = new MongoClient(uri);
 
 module.exports = async (req, res) => {
   try {
-    // Path to the CSV file
-    const csvPath = path.join(__dirname, '../data.csv');
-    const csvData = await fs.readFile(csvPath, 'utf-8');
+    await client.connect();
+    const database = client.db('poker_league');
+    const collection = database.collection('standings');
 
-    // Parse CSV into an array of objects
-    const records = parse(csvData, {
-      columns: true, // Use first row as headers
-      skip_empty_lines: true
-    });
+    // Fetch all documents from the standings collection
+    const data = await collection.find({}).toArray();
 
-    // Send the data as JSON
-    res.json({ data: records });
+    // Format data to match previous CSV structure (no $ formatting here)
+    res.json({ data });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error fetching from MongoDB:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  } finally {
+    await client.close();
   }
 };

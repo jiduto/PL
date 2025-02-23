@@ -1,24 +1,6 @@
 {
-  "name": "pl",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jiduto/PL.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jiduto/PL/issues"
-  },
-  "homepage": "https://github.com/jiduto/PL#readme",
-  "description": "",
   "dependencies": {
-    "csv-parse": "^5.6.0",
-    "mongodb": "^6.13.1"
+    "mongodb": "^6.3.0",
+    "csv-parse": "^5.5.0" // Can remove this later if no CSV use
   }
 }

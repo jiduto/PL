@@ -50,7 +50,8 @@
             const tr = document.createElement('tr');
             headers.forEach(header => {
               const td = document.createElement('td');
-              td.textContent = row[header];
+              // Add $ prefix for display if "$ Won" column
+              td.textContent = header === '$ Won' ? `$${row[header]}` : row[header];
               tr.appendChild(td);
             });
             tbody.appendChild(tr);
@@ -81,7 +82,7 @@
           const bText = b.cells[columnIndex].textContent.trim();
 
           // Handle "$ Won" column specifically
-          if (headerText === "$ Won") {
+          if (headerText === '$ Won') {
             const aNum = parseFloat(aText.replace('$', '').replace(/,/g, ''));
             const bNum = parseFloat(bText.replace('$', '').replace(/,/g, ''));
             return order === 'asc' ? aNum - bNum : bNum - aNum;
