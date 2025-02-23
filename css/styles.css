@@ -69,19 +69,34 @@ p {
   text-align: center;
 }
 .results-links ul {
-  list-style: none; /* Remove bullets */
+  list-style: none;
   padding: 0;
 }
 .results-links li {
-  margin: 10px 0; /* Space between links */
+  margin: 10px 0;
 }
 .results-links a {
-  color: #f0f8ff; /* Match body text */
-  font-size: 20px; /* Bigger font */
-  text-decoration: none; /* Remove underline */
+  color: #40b8f5; /* Link color */
+  font-size: 20px;
+  text-decoration: none;
 }
 .results-links a:hover {
-  color: #40b8f5; /* Hover color */
+  color: #3090c7; /* Hover color */
+}
+
+/* Home Links */
+.home-links {
+  text-align: center;
+}
+.home-links p {
+  margin: 10px 0; /* Space between lines */
+}
+.home-links a {
+  color: #40b8f5; /* Link color */
+  text-decoration: none;
+}
+.home-links a:hover {
+  color: #3090c7; /* Hover color */
 }
 
 /* Table Styles */

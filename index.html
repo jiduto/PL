@@ -9,7 +9,13 @@
   <body>
     <div id="menu-placeholder"></div>
     <h1 class="page-title">Welcome to the Poker League Website</h1>
-    <p>This is the home page.</p>
+    <div class="home-links">
+      <p>View the current league <a href="/standings.html">standings</a></p>
+      <p>See individual game <a href="/results.html">results</a></p>
+      <p>Learn how the league works by checking out the <a href="/info.html">info</a> page</p>
+      <p>Check out the <a href="/rules.html">rules</a> for any clarifications needed</p>
+      <p>Contact me directly with any questions or <a href="/contact.html">contact</a></p>
+    </div>
     <script>
       fetch('/menu.html')
         .then(response => response.text())
