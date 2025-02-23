@@ -8,7 +8,6 @@ module.exports = async (req, res) => {
     await client.connect();
     const database = client.db('poker_league');
 
-    // List of results collections (no underscore)
     const resultCollections = Array.from({ length: 11 }, (_, i) => 
       `results${String(i + 1).padStart(2, '0')}` // results01 to results11
     );
@@ -30,7 +29,7 @@ module.exports = async (req, res) => {
       return res.json({ data: [] });
     }
 
-    // Aggregate data by Name, ignoring "Rank" and other fields
+    // Aggregate data by Name
     const standingsMap = new Map();
     allResults.forEach(entry => {
       if (!entry.Name || entry.Name.trim() === '') return;
@@ -42,11 +41,17 @@ module.exports = async (req, res) => {
       const current = standingsMap.get(name);
       current.Points += Number(entry.Points) || 0;
       current["$ Won"] += Number(entry["$ Won"]) || 0;
-      // Explicitly not including "Rank" or other fields
     });
 
-    const standings = Array.from(standingsMap.values());
-    console.log('Aggregated standings:', standings);
+    let standings = Array.from(standingsMap.values());
+
+    // Sort by Points descending and assign Rank
+    standings.sort((a, b) => b.Points - a.Points);
+    standings.forEach((entry, index) => {
+      entry.Rank = index + 1; // Rank 1 for highest points
+    });
+
+    console.log('Aggregated standings with ranks:', standings);
 
     res.json({ data: standings });
   } catch (error) {
