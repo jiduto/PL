@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
       return res.json({ data: [] });
     }
 
-    // Aggregate data by Name, handling missing/empty fields
+    // Aggregate data by Name, ignoring "Rank" and other fields
     const standingsMap = new Map();
     allResults.forEach(entry => {
       if (!entry.Name || entry.Name.trim() === '') return;
@@ -42,6 +42,7 @@ module.exports = async (req, res) => {
       const current = standingsMap.get(name);
       current.Points += Number(entry.Points) || 0;
       current["$ Won"] += Number(entry["$ Won"]) || 0;
+      // Explicitly not including "Rank" or other fields
     });
 
     const standings = Array.from(standingsMap.values());
