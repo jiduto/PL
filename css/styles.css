@@ -56,6 +56,65 @@ body {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
+/* Table Styles */
+.table-container {
+  margin: 30px auto;
+  width: fit-content;
+}
+table {
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  table-layout: auto;
+  display: block;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+th {
+  background: linear-gradient(to bottom, #40b8f5, #38a4e0, #3090c7);
+  color: #f0f8ff;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+th.sorted {
+  background: linear-gradient(to bottom, #50c8ff, #48b4ea, #40a0d7);
+}
+th[data-order="asc"]::after {
+  content: " ↑";
+  position: absolute;
+  right: 5px;
+}
+th[data-order="desc"]::after {
+  content: " ↓";
+  position: absolute;
+  right: 5px;
+}
+th:not(.sorted)::after {
+  content: "";
+}
+td {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+tr:nth-child(even) {
+  background-color: rgba(249, 249, 249, 0.9);
+}
+tr:hover {
+  background-color: #4db1eb;
+  transition: background-color 0.3s;
+}
+
 /* Page Content */
 .page-title {
   text-align: center;
@@ -193,7 +252,7 @@ p {
   color: #3090c7;
 }
 .contact-content button {
-  margin-left: 10px; /* Still applies if button were inline */
+  margin-left: 10px;
   padding: 5px 10px;
   background-color: #40b8f5;
   color: #f0f8ff;
@@ -206,65 +265,15 @@ p {
 .contact-content button:hover {
   background-color: #3090c7;
 }
+.contact-content .copy-message {
+  display: none; /* Hidden by default */
+  margin-left: 10px; /* Space from button */
+  color: #40b8f5; /* Matches link color */
+  font-size: 14px; /* Slightly smaller */
+  font-style: italic; /* Subtle emphasis */
+}
 
-/* Table Styles */
-.table-container {
-  margin: 30px auto;
-  width: fit-content;
-}
-table {
-  border-collapse: collapse;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  table-layout: auto;
-  display: block;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-thead {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-th, td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
-}
-th {
-  background: linear-gradient(to bottom, #40b8f5, #38a4e0, #3090c7);
-  color: #f0f8ff;
-  font-weight: bold;
-  cursor: pointer;
-  position: relative;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-}
-th.sorted {
-  background: linear-gradient(to bottom, #50c8ff, #48b4ea, #40a0d7);
-}
-th[data-order="asc"]::after {
-  content: " ↑";
-  position: absolute;
-  right: 5px;
-}
-th[data-order="desc"]::after {
-  content: " ↓";
-  position: absolute;
-  right: 5px;
-}
-th:not(.sorted)::after {
-  content: "";
-}
-td {
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #333;
-}
-tr:nth-child(even) {
-  background-color: rgba(249, 249, 249, 0.9);
-}
-tr:hover {
-  background-color: #4db1eb;
-  transition: background-color 0.3s;
-}
+
 
 /* Global paragraph style */
 p {
