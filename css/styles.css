@@ -252,7 +252,7 @@ p {
   color: #3090c7;
 }
 .contact-content button {
-  margin-left: 10px; /* Still applies if button moves inline later */
+  margin-left: 10px;
   padding: 5px 10px;
   background-color: #40b8f5;
   color: #f0f8ff;
@@ -266,12 +266,25 @@ p {
   background-color: #3090c7;
 }
 .contact-content .copy-message {
-  display: none; /* Hidden by default */
-  color: #40b8f5; /* Matches link color */
-  font-size: 14px; /* Slightly smaller */
-  font-style: italic; /* Subtle emphasis */
+  display: none;
+  color: #40b8f5;
+  font-size: 14px;
+  font-style: italic;
+}
+.contact-content input[type="checkbox"] {
+  margin-right: 5px; /* Space before label */
+  vertical-align: middle; /* Align with text */
+}
+.contact-content label {
+  color: #f0f8ff;
+  font-size: 16px;
+  vertical-align: middle;
 }
 
+/* Hidden class for contact details */
+.hidden {
+  display: none;
+}
 
 
 /* Global paragraph style */

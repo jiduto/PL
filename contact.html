@@ -10,10 +10,16 @@
     <div id="menu-placeholder"></div>
     <h1 class="page-title">Contact Me</h1>
     <div class="contact-content">
-      <h2>Email:</h2>
-      <p><a href="mailto:jiduto@gmail.com">jiduto@gmail.com</a></p>
-      <p><button id="copy-email" title="Copy email to clipboard">Copy</button></p>
-      <p><span id="copy-message" class="copy-message">Email Address Copied!</span></p>
+      <p>
+        <input type="checkbox" id="human-verify" name="human-verify">
+        <label for="human-verify">Verify you are human</label>
+      </p>
+      <div id="contact-details" class="hidden">
+        <h2>Email:</h2>
+        <p><a href="mailto:jiduto@gmail.com">jiduto@gmail.com</a></p>
+        <p><button id="copy-email" title="Copy email to clipboard">Copy</button></p>
+        <p><span id="copy-message" class="copy-message">Email Address Copied!</span></p>
+      </div>
       <br><br><br> <!-- Consistent bottom spacing -->
     </div>
     <script>
@@ -27,20 +33,25 @@
         })
         .catch(error => console.error('Error loading menu:', error));
 
+      // Show contact details when checkbox is checked
+      document.getElementById('human-verify').addEventListener('change', (e) => {
+        const details = document.getElementById('contact-details');
+        details.style.display = e.target.checked ? 'block' : 'none';
+      });
+
       // Copy email to clipboard and show message
       document.getElementById('copy-email').addEventListener('click', () => {
         const email = 'jiduto@gmail.com';
         navigator.clipboard.writeText(email)
           .then(() => {
             const message = document.getElementById('copy-message');
-            message.style.display = 'inline'; // Show the message
+            message.style.display = 'inline';
             setTimeout(() => {
-              message.style.display = 'none'; // Hide after 2 seconds
+              message.style.display = 'none';
             }, 2000);
           })
           .catch(err => {
             console.error('Failed to copy email:', err);
-            // Fallback: no alert, just log error
           });
       });
     </script>
