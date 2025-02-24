@@ -28,7 +28,7 @@
         })
         .catch(error => console.error('Error loading menu:', error));
 
-      fetch('/api/hello')
+      fetch('/api/standings') // Changed from /api/hello
         .then(response => {
           if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
           return response.json();
@@ -60,9 +60,9 @@
             columnOrder.forEach(header => {
               const td = document.createElement('td');
               if (header === '$ Won' && typeof row[header] === 'number') {
-                td.textContent = row[header] === 0 ? '' : `$${row[header]}`; // Blank if $0
+                td.textContent = row[header] === 0 ? '' : `$${row[header]}`;
               } else {
-                td.textContent = row[header] === 0 ? '' : row[header]; // Blank for 0, otherwise display
+                td.textContent = row[header] === 0 ? '' : row[header];
               }
               tr.appendChild(td);
             });
