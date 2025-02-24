@@ -192,6 +192,20 @@ p {
 .contact-content a:hover {
   color: #3090c7;
 }
+.contact-content button {
+  margin-left: 10px; /* Still applies if button were inline */
+  padding: 5px 10px;
+  background-color: #40b8f5;
+  color: #f0f8ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Kanit', sans-serif;
+  font-size: 14px;
+}
+.contact-content button:hover {
+  background-color: #3090c7;
+}
 
 /* Table Styles */
 .table-container {
@@ -252,6 +266,13 @@ tr:hover {
   transition: background-color 0.3s;
 }
 
+/* Global paragraph style */
+p {
+  color: #f0f8ff;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
 /* Mobile Menu */
 @media (max-width: 600px) {
   .hamburger {
@@ -293,3 +314,10 @@ tr:hover {
     font-size: 20px;
   }
 }
+
+
+
+
+
+
+

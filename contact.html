@@ -11,7 +11,12 @@
     <h1 class="page-title">Contact Me</h1>
     <div class="contact-content">
       <h2>Email:</h2>
-      <p><a href="mailto:jiduto@gmail.com">jiduto@gmail.com</a></p>
+      <p>
+        <a href="mailto:jiduto@gmail.com">jiduto@gmail.com</a>
+      </p>
+      <p>
+        <button id="copy-email" title="Copy email to clipboard">Copy Address</button>
+      </p>
       <br><br><br> <!-- Consistent bottom spacing -->
     </div>
     <script>
@@ -24,6 +29,19 @@
           });
         })
         .catch(error => console.error('Error loading menu:', error));
+
+      // Copy email to clipboard
+      document.getElementById('copy-email').addEventListener('click', () => {
+        const email = 'jiduto@gmail.com';
+        navigator.clipboard.writeText(email)
+          .then(() => {
+            alert('Email copied to clipboard!');
+          })
+          .catch(err => {
+            console.error('Failed to copy email:', err);
+            alert('Failed to copy email. Please copy it manually.');
+          });
+      });
     </script>
   </body>
 </html>
