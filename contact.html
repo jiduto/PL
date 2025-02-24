@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="menu-placeholder"></div>
+    <h1 class="page-title">Contact Me</h1>
+    <div class="info-content">
+      <h1 class="first-header">CONTACT ME:</h1>
+      <h2>Email:</h2>
+      <p><a href="mailto:jiduto@gmail.com">jiduto@gmail.com</a></p>
+      <br><br><br> <!-- Consistent bottom spacing -->
+    </div>
+    <script>
+      fetch('/menu.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('menu-placeholder').innerHTML = html;
+          document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-menu').classList.toggle('active');
+          });
+        })
+        .catch(error => console.error('Error loading menu:', error));
+    </script>
+  </body>
+</html>

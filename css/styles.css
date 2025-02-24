@@ -159,6 +159,46 @@ p {
   text-align: left;
 }
 
+/* Info Content (also used for contact.html) */
+.info-content {
+  text-align: left;
+  padding: 0 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.info-content h1 {
+  color: #f0f8ff;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 90px 0 15px;
+}
+.info-content h1.first-header {
+  margin-top: 0;
+}
+.info-content h2 {
+  color: #f0f8ff;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 45px 0 15px;
+}
+.info-content p {
+  color: #f0f8ff;
+  font-size: 16px;
+  margin: 10px 0;
+  text-align: left;
+}
+.info-content .indented {
+  margin-left: 40px;
+}
+.info-content a {
+  color: #40b8f5; /* Link color */
+  text-decoration: none;
+}
+.info-content a:hover {
+  color: #3090c7; /* Hover color */
+}
+
 /* Global paragraph style */
 p {
   color: #f0f8ff;
