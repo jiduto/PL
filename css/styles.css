@@ -101,10 +101,10 @@ p {
 
 /* Info Content */
 .info-content {
-  text-align: center;
-  padding: 0 20px;
-  max-width: 800px;
-  margin: 0 auto;
+  text-align: left; /* Left-align text */
+  padding: 0 40px; /* More padding from edges */
+  max-width: 800px; /* Keep readable width */
+  margin: 0 auto; /* Center the block */
 }
 .info-content h1 {
   color: #f0f8ff;
@@ -125,9 +125,7 @@ p {
   margin: 10px 0;
 }
 .info-content .indented {
-  text-align: left;
-  display: inline-block;
-  margin-left: 20px; /* Indent effect */
+  margin-left: 40px; /* Consistent indent with padding */
 }
 
 /* Table Styles */
