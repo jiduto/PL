@@ -252,7 +252,7 @@ p {
   color: #3090c7;
 }
 .contact-content button {
-  margin-left: 10px;
+  margin-left: 10px; /* Still applies if button moves inline later */
   padding: 5px 10px;
   background-color: #40b8f5;
   color: #f0f8ff;
@@ -267,7 +267,6 @@ p {
 }
 .contact-content .copy-message {
   display: none; /* Hidden by default */
-  margin-left: 10px; /* Space from button */
   color: #40b8f5; /* Matches link color */
   font-size: 14px; /* Slightly smaller */
   font-style: italic; /* Subtle emphasis */
