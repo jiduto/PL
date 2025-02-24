@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const uri = process.env.MONGODB_URI || "mongodb+srv://jiduto:Ee4422400!!@clusterpl.irn25.mongodb.net/?retryWrites=true&w=majority&appName=ClusterPL";
+const uri = process.env.MONGODB_URI || "mongodb+srv://admin:yourpassword@cluster0.xxx.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
 module.exports = async (req, res) => {
@@ -11,10 +11,13 @@ module.exports = async (req, res) => {
     const database = client.db('poker_league');
     console.log('Using database: poker_league');
 
-    const resultCollections = Array.from({ length: 11 }, (_, i) => 
-      `results${String(i + 1).padStart(2, '0')}`
-    );
-    console.log('Collections to check:', resultCollections);
+    // Dynamically fetch all collections starting with "results"
+    const collections = await database.listCollections().toArray();
+    const resultCollections = collections
+      .filter(c => c.name.startsWith('results'))
+      .map(c => c.name)
+      .sort(); // Ensures results01, results02, etc., in order
+    console.log('Detected collections:', resultCollections);
 
     const allResults = [];
     for (const collName of resultCollections) {
@@ -53,8 +56,8 @@ module.exports = async (req, res) => {
       const current = standingsMap.get(name);
       current.Points += Number(entry.POINTS) || 0;
       current["$ Won"] += Number(String(entry["$ Won"]).replace('$', '').replace(/,/g, '')) || 0;
-      current["KO's"] += Number(entry["KO's"]) || 0; // Aggregate knockouts
-      current["# of Games Played"] += Number(entry["# of Games Played"]) || 0; // Aggregate games
+      current["KO's"] += Number(entry["KO's"]) || 0;
+      current["# of Games Played"] += Number(entry["# of Games Played"]) || 0;
       console.log('Processed entry for', name, 'Current totals:', current);
     });
 
