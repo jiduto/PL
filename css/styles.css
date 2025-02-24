@@ -111,16 +111,16 @@ p {
   font-size: 24px;
   font-weight: bold;
   text-decoration: underline;
-  margin: 90px 0 20px; /* 2 line breaks (~30px) above, 20px below */
+  margin: 90px 0 15px; /* 90px (~6 line breaks) above, 20px below */
 }
 .info-content h1.first-header {
-  margin-top: 0; /* No extra space above the first h1 */
+  margin-top: 0; /* No extra space above first h1 */
 }
 .info-content h2 {
   color: #f0f8ff;
   font-size: 20px;
   font-weight: bold;
-  margin: 45px 0; /* 1 line break (~15px) above, 15px below */
+  margin: 45px 0 15px; /* 45px (~3 line breaks) above, 15px below */
 }
 .info-content p {
   color: #f0f8ff;
