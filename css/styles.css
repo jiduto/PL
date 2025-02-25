@@ -167,14 +167,15 @@ p {
   font-size: 20px;
   font-weight: bold;
   margin: 20px 0 15px;
-  text-align: left; /* Already left-aligned */
+  text-align: left;
+  text-decoration: underline;
 }
 .home-left p,
 .home-right p {
   color: #f0f8ff;
   font-size: 16px;
   margin: 10px 0;
-  text-align: left; /* Already left-aligned */
+  text-align: left;
 }
 .home-left a {
   color: #40b8f5;
