@@ -177,11 +177,13 @@ p {
   margin: 10px 0;
   text-align: left;
 }
-.home-left a {
+.home-left a,
+.home-right a { /* Added .home-right a */
   color: #40b8f5;
   text-decoration: none;
 }
-.home-left a:hover {
+.home-left a:hover,
+.home-right a:hover { /* Added .home-right a:hover */
   color: #3090c7;
 }
 
