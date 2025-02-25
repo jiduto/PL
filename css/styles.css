@@ -326,6 +326,15 @@ p {
   display: none;
 }
 
+/* Back Link Styling */
+.back-link a {
+  color: #40b8f5; /* Matches .home-left a */
+  text-decoration: none;
+}
+.back-link a:hover {
+  color: #3090c7; /* Matches .home-left a:hover */
+}
+
 
 /* Global paragraph style */
 p {
