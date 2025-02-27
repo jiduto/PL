@@ -336,6 +336,16 @@ p {
 }
 
 
+/* Loading Message */
+#loading-message {
+  color: #f0f8ff;
+  font-size: 16px;
+  text-align: center;
+  margin: 20px 0; /* Space above/below */
+}
+
+
+
 /* Global paragraph style */
 p {
   color: #f0f8ff;
