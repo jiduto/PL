@@ -362,7 +362,7 @@ p {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 60px;
+    top: 42px; /* Adjusted for shorter navbar height */
     left: 0;
     width: 100%;
     background: linear-gradient(to bottom, #3090c7, #40b8f5);
@@ -375,7 +375,7 @@ p {
     text-align: center;
   }
   .nav-link {
-    padding: 15px;
+    padding: 8px; /* Reduced from 15px */
   }
   .table-container {
     display: flex;
@@ -393,6 +393,7 @@ p {
   .page-title {
     font-size: 20px;
   }
+  /* Stack home divs on mobile */
   .home-container {
     flex-direction: column;
     padding: 0 20px;
@@ -400,6 +401,17 @@ p {
   .home-left,
   .home-right {
     width: 100%;
+  }
+  /* Shorten navbar and add padding below */
+  .navbar {
+    padding: 9px; /* Reduced from 15px, ~40% shorter (~70px to ~42px) */
+  }
+  .hamburger {
+    font-size: 18px; /* Reduced from 24px */
+    padding: 6px; /* Reduced from 10px */
+  }
+  body {
+    padding-top: 82px; /* Increased from 70px to add space below navbar */
   }
 }
 
