@@ -29,6 +29,17 @@
         .then(response => response.text())
         .then(html => {
           document.getElementById('menu-placeholder').innerHTML = html;
+          // Highlight current page link after menu loads
+          const currentPath = window.location.pathname === '/' ? '/index.html' : window.location.pathname;
+          const navLinks = document.querySelectorAll('.nav-menu .nav-item');
+          navLinks.forEach(item => {
+            const link = item.querySelector('.nav-link');
+            const href = link.getAttribute('href');
+            if (href === currentPath || (href === '/results.html' && currentPath.startsWith('/results_game'))) {
+              item.classList.add('active');
+            }
+          });
+          // Hamburger listener (unused but kept for consistency)
           document.querySelector('.hamburger').addEventListener('click', () => {
             document.querySelector('.nav-menu').classList.toggle('active');
           });
