@@ -55,6 +55,11 @@ body {
   padding: 10px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
+/* Hide mobile-home on desktop */
+.mobile-home {
+  display: none;
+}
+
 
 /* Table Styles */
 .table-container {
@@ -355,6 +360,7 @@ p {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
+
 /* Mobile Menu */
 @media (max-width: 600px) {
   .hamburger {
@@ -364,7 +370,7 @@ p {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 42px; /* Adjusted for shorter navbar height */
+    top: 42px;
     left: 0;
     width: 100%;
     background: linear-gradient(to bottom, #3090c7, #40b8f5);
@@ -377,7 +383,7 @@ p {
     text-align: center;
   }
   .nav-link {
-    padding: 8px; /* Reduced from 15px */
+    padding: 8px;
   }
   .table-container {
     display: flex;
@@ -395,7 +401,6 @@ p {
   .page-title {
     font-size: 20px;
   }
-  /* Stack home divs on mobile */
   .home-container {
     flex-direction: column;
     padding: 0 20px;
@@ -404,21 +409,27 @@ p {
   .home-right {
     width: 100%;
   }
-  /* Shorten navbar and add padding below */
   .navbar {
-    padding: 9px; /* Reduced from 15px, ~40% shorter (~70px to ~42px) */
+    padding: 9px;
+    display: flex; /* Flexbox for mobile layout */
+    justify-content: space-between; /* Hamburger left, Home right */
+    align-items: center; /* Vertically center items */
   }
   .hamburger {
-    font-size: 18px; /* Reduced from 24px */
-    padding: 6px; /* Reduced from 10px */
+    font-size: 18px;
+    padding: 6px;
   }
   body {
-    padding-top: 82px; /* Increased from 70px to add space below navbar */
+    padding-top: 82px;
+  }
+  /* Show and position mobile-home on right */
+  .mobile-home {
+    display: block;
+  }
+  .mobile-home .nav-link {
+    padding: 6px; /* Match hamburger padding */
   }
 }
-
-
-
 
 
 
