@@ -411,9 +411,9 @@ p {
   }
   .navbar {
     padding: 9px;
-    display: flex; /* Flexbox for mobile layout */
-    justify-content: space-between; /* Hamburger left, Home right */
-    align-items: center; /* Vertically center items */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .hamburger {
     font-size: 18px;
@@ -422,12 +422,18 @@ p {
   body {
     padding-top: 82px;
   }
-  /* Show and position mobile-home on right */
+  /* Ensure mobile-home displays and positions on right */
   .mobile-home {
     display: block;
+    order: 1; /* Pushes it to the end of flex items */
+  }
+  .nav-menu .mobile-home {
+    position: absolute; /* Positions it outside dropdown flow */
+    right: 10px; /* Aligns to right edge */
+    top: 9px; /* Matches navbar padding */
   }
   .mobile-home .nav-link {
-    padding: 6px; /* Match hamburger padding */
+    padding: 6px;
   }
 }
 
