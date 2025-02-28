@@ -10,9 +10,10 @@
     <div id="menu-placeholder"></div>
     <h1 class="page-title">Contact Me</h1>
     <div class="contact-content">
+      <p id="captcha-question">What is <span id="num1"></span> + <span id="num2"></span>?</p>
       <p>
-        <input type="checkbox" id="human-verify" name="human-verify">
-        <label for="human-verify">Verify you are human</label>
+        <input type="number" id="captcha-answer" placeholder="Enter answer" required>
+        <button id="verify-captcha">Verify</button>
       </p>
       <div id="contact-details" class="hidden">
         <h2>Email:</h2>
@@ -20,7 +21,7 @@
         <p><button id="copy-email" title="Copy email to clipboard">Copy</button></p>
         <p><span id="copy-message" class="copy-message">Email Address Copied!</span></p>
       </div>
-      <br><br><br> <!-- Consistent bottom spacing -->
+      <br><br><br>
     </div>
     <script>
       fetch('/menu.html')
@@ -33,10 +34,26 @@
         })
         .catch(error => console.error('Error loading menu:', error));
 
-      // Show contact details when checkbox is checked
-      document.getElementById('human-verify').addEventListener('change', (e) => {
-        const details = document.getElementById('contact-details');
-        details.style.display = e.target.checked ? 'block' : 'none';
+      // Generate random CAPTCHA numbers
+      const num1 = Math.floor(Math.random() * 10) + 1; // 1-10
+      const num2 = Math.floor(Math.random() * 10) + 1; // 1-10
+      document.getElementById('num1').textContent = num1;
+      document.getElementById('num2').textContent = num2;
+      const correctAnswer = num1 + num2;
+
+      // Verify CAPTCHA and show contact details
+      document.getElementById('verify-captcha').addEventListener('click', () => {
+        const userAnswer = parseInt(document.getElementById('captcha-answer').value, 10);
+        if (userAnswer === correctAnswer) {
+          document.getElementById('contact-details').style.display = 'block';
+          // Optionally hide CAPTCHA elements
+          document.getElementById('captcha-question').style.display = 'none';
+          document.getElementById('captcha-answer').style.display = 'none';
+          document.getElementById('verify-captcha').style.display = 'none';
+        } else {
+          alert('Incorrect answer. Please try again.');
+          document.getElementById('captcha-answer').value = ''; // Clear input
+        }
       });
 
       // Copy email to clipboard and show message

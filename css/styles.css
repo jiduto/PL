@@ -311,14 +311,16 @@ p {
   font-size: 14px;
   font-style: italic;
 }
-.contact-content input[type="checkbox"] {
-  margin-right: 5px; /* Space before label */
-  vertical-align: middle; /* Align with text */
-}
-.contact-content label {
-  color: #f0f8ff;
+.contact-content input[type="number"] {
+  padding: 5px;
   font-size: 16px;
-  vertical-align: middle;
+  font-family: 'Kanit', sans-serif;
+  width: 80px; /* Compact width */
+  margin-right: 10px; /* Space before button */
+  border: 1px solid #40b8f5; /* Matches theme */
+  border-radius: 5px;
+  background-color: #f0f8ff;
+  color: #333;
 }
 
 /* Hidden class for contact details */
