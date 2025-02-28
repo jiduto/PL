@@ -14,6 +14,7 @@ body {
   padding-top: 70px; /* Space for fixed navbar */
 }
 
+
 /* Navbar Styles */
 .navbar {
   background: linear-gradient(to bottom, #3090c7, #40b8f5);
@@ -48,16 +49,12 @@ body {
   border-radius: 5px;
 }
 .hamburger {
-  display: none;
+  display: none; /* Keep hidden since we’re removing toggle */
   color: #f0f8ff;
   font-size: 24px;
   cursor: pointer;
   padding: 10px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-}
-/* Hide mobile-home on desktop */
-.mobile-home {
-  display: none;
 }
 
 
@@ -363,27 +360,18 @@ p {
 
 /* Mobile Menu */
 @media (max-width: 600px) {
-  .hamburger {
-    display: block;
-  }
   .nav-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 42px;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(to bottom, #3090c7, #40b8f5);
-  }
-  .nav-menu.active {
-    display: flex;
+    display: flex; /* Always show navbar links */
+    justify-content: space-around; /* Keep horizontal layout */
+    flex-wrap: wrap; /* Allow wrapping if too cramped */
   }
   .nav-item {
-    width: 100%;
+    flex: 1; /* Distribute space evenly */
     text-align: center;
   }
   .nav-link {
-    padding: 8px;
+    padding: 8px; /* Reduced from previous mobile adjustment */
+    font-size: 14px; /* Slightly smaller for fit */
   }
   .table-container {
     display: flex;
@@ -410,32 +398,15 @@ p {
     width: 100%;
   }
   .navbar {
-    padding: 9px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .hamburger {
-    font-size: 18px;
-    padding: 6px;
+    padding: 9px; /* Previous mobile adjustment */
   }
   body {
-    padding-top: 82px;
-  }
-  /* Ensure mobile-home displays and positions on right */
-  .mobile-home {
-    display: block;
-    order: 1; /* Pushes it to the end of flex items */
-  }
-  .nav-menu .mobile-home {
-    position: absolute; /* Positions it outside dropdown flow */
-    right: 10px; /* Aligns to right edge */
-    top: 9px; /* Matches navbar padding */
-  }
-  .mobile-home .nav-link {
-    padding: 6px;
+    padding-top: 82px; /* Previous mobile adjustment */
   }
 }
+
+
+
 
 
 
