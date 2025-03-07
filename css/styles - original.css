@@ -1,34 +1,17 @@
 html {
   font-family: 'Kanit', sans-serif;
-  width: 100%;
-  height:100%;
 }
 
 body {
-  background: linear-gradient(-45deg, #3090c7, #11171a, #3090c7);
-  background-size: 400% 400%;
+  background: linear-gradient(to bottom, #404040, #000000);
+  background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  animation: gradient 15s ease infinite;
-  width: 100%;
-  height:100%;
+  min-height: 100vh;
   margin: 0;
   color: #f0f8ff;
   position: relative;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   padding-top: 70px; /* Space for fixed navbar */
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 
@@ -149,23 +132,22 @@ p {
 
 /* Results Links */
 .results-links {
-  padding: 20px 40px;
-  max-width: 800px;
-  margin: 0 auto;
   text-align: center;
-  background-color: black;
-  background: rgba(0, 0, 0, 0.5);
-  border: solid thin #3090c7;
-  border-radius: 10px;
-  
+}
+.results-links ul {
+  list-style: none;
+  padding: 0;
+}
+.results-links li {
+  margin: 10px 0;
 }
 .results-links a {
-  color: #fff;
+  color: #40b8f5;
   font-size: 20px;
   text-decoration: none;
 }
 .results-links a:hover {
-  color: #40b8f5;
+  color: #3090c7;
 }
 
 /* Home Container */
@@ -176,25 +158,20 @@ p {
   justify-content: space-between;
   padding: 0 40px;
 }
-.home-left, .home-right {
-  width: 45%;
-  background-color: black;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 0 0 20px;
-  border: solid thin #3090c7;
-  border-radius: 10px;
+.home-left {
+  width: 55%;
 }
-
+.home-right {
+  width: 45%;
+}
 .home-left h2,
 .home-right h2 {
   color: #f0f8ff;
   font-size: 20px;
   font-weight: bold;
-  margin: 0 0 15px;
+  margin: 20px 0 15px;
   text-align: left;
   text-decoration: underline;
-  border-top-left-radius: 9px;
-  border-top-right-radius: 9px;
 }
 .home-left p,
 .home-right p {
@@ -202,7 +179,6 @@ p {
   font-size: 16px;
   margin: 10px 0;
   text-align: left;
-  padding: 0 0 0 12px;
 }
 .home-left a,
 .home-right a { /* Added .home-right a */
@@ -229,34 +205,19 @@ p {
   color: #3090c7;
 }
 
-
-/* TOP BAR */
-.topbar {
-  background-color: #3090c7;
-  padding: 8px 0 8px 12px;
-}
-
-
 /* Info Content */
 .info-content {
   text-align: left;
   padding: 0 40px;
   max-width: 800px;
   margin: 0 auto;
-  background-color: black;
-  background: rgba(0, 0, 0, 0.5);
-  border: solid thin #3090c7;
-  border-radius: 10px;
-}
-.info-content h1.top-h1 {
-	margin: 35px 0 15px;
 }
 .info-content h1 {
   color: #f0f8ff;
   font-size: 24px;
   font-weight: bold;
   text-decoration: underline;
-  margin: 80px 0 15px;
+  margin: 90px 0 15px;
 }
 .info-content h1.first-header {
   margin-top: 0;
@@ -287,13 +248,9 @@ p {
 /* Rules Content */
 .rules-content {
   text-align: left;
-  padding: 10px 40px 0;
+  padding: 0 40px;
   max-width: 800px;
   margin: 0 auto;
-  background-color: black;
-  background: rgba(0, 0, 0, 0.5);
-  border: solid thin #3090c7;
-  border-radius: 10px;
 }
 .rules-content h1 {
   color: #f0f8ff;
@@ -314,15 +271,10 @@ p {
 
 /* Contact Content */
 .contact-content {
-  padding: 20px 0;
   text-align: center;
+  padding: 0 40px;
   max-width: 800px;
-  min-height: 240px;
   margin: 0 auto;
-  background-color: black;
-  background: rgba(0, 0, 0, 0.5);
-  border: solid thin #3090c7;
-  border-radius: 10px;
 }
 .contact-content h2 {
   color: #f0f8ff;
@@ -387,39 +339,6 @@ p {
 .back-link a:hover {
   color: #3090c7; /* Matches .home-left a:hover */
 }
-
-
-/* Raise button style */
-.raise {
-  --color: #F5F5F5;
-  --hover: #3090c7;
-  color: var(--color);
-  background: none;
-  border: 2px solid var(--color);
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
-  transition: 0.25s;
-}
-
-.raise:hover,
-.raise:focus {
-  border-color: var(--hover);
-  color: var(--hover);
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  transform: translateY(-0.25em);
-}
-
-/* Row of raise links */
-.raise-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-
 
 
 /* Loading Message */

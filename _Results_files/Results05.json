@@ -1,0 +1,90 @@
+[
+  {
+    "RANK": 1,
+    "NAME": "Phil",
+    "POINTS": 21,
+    "KO's": 3,
+    "$ Won": "$170",
+    "# of Games Played": 1
+  },
+  {
+    "RANK": 2,
+    "NAME": "Tony F",
+    "POINTS": 20,
+    "KO's": 5,
+    "$ Won": "$100",
+    "# of Games Played": 1
+  },
+  {
+    "RANK": 3,
+    "NAME": "Johnny",
+    "POINTS": 15,
+    "KO's": 2,
+    "$ Won": "$60",
+    "# of Games Played": 1
+  },
+  {
+    "RANK": 4,
+    "NAME": "David",
+    "POINTS": 11,
+    "KO's": 0,
+    "$ Won": "$0",
+    "# of Games Played": 1
+  },
+  {
+    "RANK": 5,
+    "NAME": "Charles",
+    "POINTS": 10,
+    "KO's": 0,
+    "$ Won": "$0",
+    "# of Games Played": 1
+  },
+  {
+    "RANK": 6,
+    "NAME": "Tyler",
+    "POINTS": 10,
+    "KO's": 1,
+    "$ Won": "$0",
+    "# of Games Played": 1
+  },
+  {
+    "RANK": 7,
+    "NAME": "Brian",
+    "POINTS": 8,
+    "KO's": 0,
+    "$ Won": "$0",
+    "# of Games Played": 1
+  },
+  {
+    "RANK": 8,
+    "NAME": "Paul",
+    "POINTS": 7,
+    "KO's": 0,
+    "$ Won": "$0",
+    "# of Games Played": 1
+  },
+  {
+    "RANK": 9,
+    "NAME": "Josh",
+    "POINTS": 6,
+    "KO's": 0,
+    "$ Won": "$0",
+    "# of Games Played": 1
+  },
+  {
+    "RANK": 10,
+    "NAME": "Mariano",
+    "POINTS": 5,
+    "KO's": 0,
+    "$ Won": "$0",
+    "# of Games Played": 1
+  },
+  {
+    "RANK": 11,
+    "NAME": "Jake",
+    "POINTS": 4,
+    "KO's": 0,
+    "$ Won": "$0",
+    "# of Games Played": 1
+  }
+]
