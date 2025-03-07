@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  background: linear-gradient(-45deg, #9edeff, #11171a, #3090c7);
+  background: linear-gradient(-45deg, #9edeff, #11171a, #3090c7, #3090c7);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   width: 100%;
@@ -173,20 +173,25 @@ p {
   justify-content: space-between;
   padding: 0 40px;
 }
-.home-left {
-  width: 55%;
-}
-.home-right {
+.home-left, .home-right {
   width: 45%;
+  background-color: black;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 0 20px;
+  border: solid thin #3090c7;
+  border-radius: 10px;
 }
+
 .home-left h2,
 .home-right h2 {
   color: #f0f8ff;
   font-size: 20px;
   font-weight: bold;
-  margin: 20px 0 15px;
+  margin: 0 0 15px;
   text-align: left;
   text-decoration: underline;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
 }
 .home-left p,
 .home-right p {
@@ -194,6 +199,7 @@ p {
   font-size: 16px;
   margin: 10px 0;
   text-align: left;
+  padding: 0 0 0 12px;
 }
 .home-left a,
 .home-right a { /* Added .home-right a */
@@ -219,6 +225,14 @@ p {
 .home-links a:hover {
   color: #3090c7;
 }
+
+
+/* TOP BAR */
+.topbar {
+  background-color: #3090c7;
+  padding: 8px 0 8px 12px;
+}
+
 
 /* Info Content */
 .info-content {
