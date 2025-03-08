@@ -151,7 +151,7 @@ p {
 .results-links {
   padding: 20px 40px;
   max-width: 800px;
-  margin: 0 auto 30px;
+  margin: 0 auto 60px;
   text-align: center;
   background-color: black;
   background: rgba(0, 0, 0, 0.5);
@@ -183,7 +183,14 @@ p {
   padding: 0 0 20px;
   border: solid thin #3090c7;
   border-radius: 10px;
+}
+
+.home-left {
   margin: 10px 0 30px;
+}
+
+.home-right {
+  margin: 10px 0 60px;
 }
 
 .home-left h2,
@@ -243,7 +250,7 @@ p {
   text-align: left;
   padding: 0 40px;
   max-width: 800px;
-  margin: 0 auto 30px;
+  margin: 0 auto 60px;
   background-color: black;
   background: rgba(0, 0, 0, 0.5);
   border: solid thin #3090c7;
@@ -290,7 +297,7 @@ p {
   text-align: left;
   padding: 10px 40px 0;
   max-width: 800px;
-  margin: 0 auto 30px;
+  margin: 0 auto 60px;
   background-color: black;
   background: rgba(0, 0, 0, 0.5);
   border: solid thin #3090c7;
